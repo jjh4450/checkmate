@@ -22,7 +22,7 @@ class _AuthPageState extends State<AuthPage> {
     if (a) {
       return LogIN_Screen(to);
     } else {
-      return SignUp_Screen(to);
+      return SignUpScreen(to);
     }
   }
 }

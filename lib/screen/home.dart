@@ -17,45 +17,71 @@ class _Home_ScreenState extends State<Home_Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColors,
-      floatingActionButton: Visibility(
-        visible: show,
-        child: FloatingActionButton(
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => AddScreen(),
-            ));
-          },
-          backgroundColor: customGreen,
-          child: Icon(Icons.add, size: 30),
+      backgroundColor: Colors.grey[100],
+      floatingActionButton: AnimatedSlide(
+        duration: Duration(milliseconds: 300),
+        offset: show ? Offset.zero : Offset(0, 2),
+        child: AnimatedOpacity(
+          duration: Duration(milliseconds: 300),
+          opacity: show ? 1 : 0,
+          child: FloatingActionButton.extended(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => AddScreen(),
+              ));
+            },
+            backgroundColor: customGreen,
+            icon: Icon(Icons.add, size: 24),
+            label: Text('Add Note'),
+            elevation: 4,
+          ),
         ),
       ),
       body: SafeArea(
         child: NotificationListener<UserScrollNotification>(
           onNotification: (notification) {
             if (notification.direction == ScrollDirection.forward) {
-              setState(() {
-                show = true;
-              });
+              setState(() => show = true);
             }
             if (notification.direction == ScrollDirection.reverse) {
-              setState(() {
-                show = false;
-              });
+              setState(() => show = false);
             }
             return true;
           },
-          child: Column(
-            children: [
-              Stream_note(false),
-              Text(
-                'isDone',
-                style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey.shade500,
-                    fontWeight: FontWeight.bold),
+          child: CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Text(
+                    'My Notes',
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black87,
+                    ),
+                  ),
+                ),
               ),
-              Stream_note(true),
+              SliverToBoxAdapter(
+                child: Stream_note(false),
+              ),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+                  child: Text(
+                    'Completed',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.grey.shade600,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: Stream_note(true),
+              ),
             ],
           ),
         ),

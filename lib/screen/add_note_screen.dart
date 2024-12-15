@@ -17,22 +17,70 @@ class _AddScreenState extends State<AddScreen> {
   FocusNode _focusNode1 = FocusNode();
   FocusNode _focusNode2 = FocusNode();
   int indexx = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColors,
-      body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            title_widgets(),
-            SizedBox(height: 20),
-            subtite_wedgite(),
-            SizedBox(height: 20),
-            imagess(),
-            SizedBox(height: 20),
-            button()
-          ],
+      backgroundColor: Colors.grey[100],
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios, color: Colors.grey[800]),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: Text(
+          'Add New Task',
+          style: TextStyle(
+            color: Colors.black87,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 20),
+              Text(
+                'Task Title',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.grey[700],
+                ),
+              ),
+              SizedBox(height: 8),
+              title_widgets(),
+              SizedBox(height: 24),
+              Text(
+                'Description',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.grey[700],
+                ),
+              ),
+              SizedBox(height: 8),
+              subtite_wedgite(),
+              SizedBox(height: 24),
+              Text(
+                'Choose Icon',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.grey[700],
+                ),
+              ),
+              SizedBox(height: 8),
+              imagess(),
+              SizedBox(height: 32),
+              button(),
+            ],
+          ),
         ),
       ),
     );
@@ -40,36 +88,34 @@ class _AddScreenState extends State<AddScreen> {
 
   Widget button() {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            foregroundColor: customGreen,
-            minimumSize: Size(170, 48),
+        Expanded(
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: customGreen,
+              foregroundColor: Colors.white,
+              padding: EdgeInsets.symmetric(vertical: 15),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+            onPressed: () {
+              FirestoreDatasource().addNote(subtitle.text, title.text, indexx);
+              Navigator.pop(context);
+            },
+            child: Text(
+              'Add Task',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+            ),
           ),
-          onPressed: () {
-            FirestoreDatasource().addNote(subtitle.text, title.text, indexx);
-            Navigator.pop(context);
-          },
-          child: Text('add task'),
-        ),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            foregroundColor: Colors.red,
-            minimumSize: Size(170, 48),
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text('Cancel'),
         ),
       ],
     );
   }
 
-  Container imagess() {
+  Widget imagess() {
     return Container(
-      height: 180,
+      height: 120,
       child: ListView.builder(
         itemCount: 4,
         scrollDirection: Axis.horizontal,
@@ -80,23 +126,29 @@ class _AddScreenState extends State<AddScreen> {
                 indexx = index;
               });
             },
-            child: Padding(
-              padding: EdgeInsets.only(left: index == 0 ? 7 : 0),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    width: 2,
-                    color: indexx == index ? customGreen : Colors.grey,
-                  ),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  width: 2,
+                  color: indexx == index ? customGreen : Colors.grey.shade200,
                 ),
-                width: 140,
-                margin: EdgeInsets.all(8),
-                child: Column(
-                  children: [
-                    Image.asset('images/${index}.png'),
-                  ],
-                ),
+                boxShadow: [
+                  if (indexx == index)
+                    BoxShadow(
+                      color: customGreen.withOpacity(0.1),
+                      blurRadius: 8,
+                      offset: Offset(0, 4),
+                    ),
+                ],
+              ),
+              width: 100,
+              margin: EdgeInsets.only(right: 12),
+              padding: EdgeInsets.all(12),
+              child: Image.asset(
+                'images/${index}.png',
+                fit: BoxFit.contain,
               ),
             ),
           );
@@ -106,71 +158,55 @@ class _AddScreenState extends State<AddScreen> {
   }
 
   Widget title_widgets() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
+    return TextField(
+      controller: title,
+      focusNode: _focusNode1,
+      style: TextStyle(fontSize: 16, color: Colors.black87),
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.white,
+        hintText: 'Enter task title',
+        hintStyle: TextStyle(color: Colors.grey[400]),
+        contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide.none,
         ),
-        child: TextField(
-          controller: title,
-          focusNode: _focusNode1,
-          style: TextStyle(fontSize: 18, color: Colors.black),
-          decoration: InputDecoration(
-              contentPadding:
-                  EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-              hintText: 'title',
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(
-                  color: Color(0xffc5c5c5),
-                  width: 2.0,
-                ),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(
-                  color: customGreen,
-                  width: 2.0,
-                ),
-              )),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Colors.grey.shade200, width: 1),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: customGreen, width: 2),
         ),
       ),
     );
   }
 
-  Padding subtite_wedgite() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
+  Widget subtite_wedgite() {
+    return TextField(
+      controller: subtitle,
+      focusNode: _focusNode2,
+      maxLines: 3,
+      style: TextStyle(fontSize: 16, color: Colors.black87),
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.white,
+        hintText: 'Enter task description',
+        hintStyle: TextStyle(color: Colors.grey[400]),
+        contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide.none,
         ),
-        child: TextField(
-          maxLines: 3,
-          controller: subtitle,
-          focusNode: _focusNode2,
-          style: TextStyle(fontSize: 18, color: Colors.black),
-          decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-            hintText: 'subtitle',
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(
-                color: Color(0xffc5c5c5),
-                width: 2.0,
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(
-                color: customGreen,
-                width: 2.0,
-              ),
-            ),
-          ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Colors.grey.shade200, width: 1),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: customGreen, width: 2),
         ),
       ),
     );
