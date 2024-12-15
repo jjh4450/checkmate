@@ -7,10 +7,10 @@ class SignUp_Screen extends StatefulWidget {
   SignUp_Screen(this.show, {super.key});
 
   @override
-  State<SignUp_Screen> createState() => _SignUp_ScreenState();
+  State<SignUp_Screen> createState() => _SignUpScreenState();
 }
 
-class _SignUp_ScreenState extends State<SignUp_Screen> {
+class _SignUpScreenState extends State<SignUp_Screen> {
   FocusNode _focusNode1 = FocusNode();
   FocusNode _focusNode2 = FocusNode();
   FocusNode _focusNode3 = FocusNode();
@@ -54,7 +54,7 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
               SizedBox(height: 8),
               account(),
               SizedBox(height: 20),
-              SignUP_bottom(),
+              SignUpBottom(),
             ],
           ),
         ),
@@ -88,7 +88,7 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
     );
   }
 
-  Widget SignUP_bottom() {
+  Widget SignUpBottom() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: GestureDetector(
@@ -101,7 +101,7 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
           width: double.infinity,
           height: 50,
           decoration: BoxDecoration(
-            color: custom_green,
+            color: customGreen,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Text(
@@ -133,7 +133,7 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
           decoration: InputDecoration(
               prefixIcon: Icon(
                 iconss,
-                color: _focusNode.hasFocus ? custom_green : Color(0xffc5c5c5),
+                color: _focusNode.hasFocus ? customGreen : Color(0xffc5c5c5),
               ),
               contentPadding:
                   EdgeInsets.symmetric(horizontal: 15, vertical: 15),
@@ -148,7 +148,7 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide(
-                  color: custom_green,
+                  color: customGreen,
                   width: 2.0,
                 ),
               )),

@@ -26,11 +26,11 @@ class _Task_WidgetState extends State<Task_Widget> {
           color: Colors.white,
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
+              color: Color(0x33000000),
               spreadRadius: 5,
               blurRadius: 7,
               offset: Offset(0, 2),
-            ),
+            )
           ],
         ),
         child: Padding(
@@ -57,13 +57,13 @@ class _Task_WidgetState extends State<Task_Widget> {
                           ),
                         ),
                         Checkbox(
-                          activeColor: custom_green,
+                          activeColor: customGreen,
                           value: isDone,
                           onChanged: (value) {
                             setState(() {
                               isDone = !isDone;
                             });
-                            Firestore_Datasource()
+                            FirestoreDatasource()
                                 .isdone(widget._note.id, isDone);
                           },
                         )
@@ -77,7 +77,7 @@ class _Task_WidgetState extends State<Task_Widget> {
                           color: Colors.grey.shade400),
                     ),
                     Spacer(),
-                    edit_time()
+                    editTime()
                   ],
                 ),
               ),
@@ -88,7 +88,7 @@ class _Task_WidgetState extends State<Task_Widget> {
     );
   }
 
-  Widget edit_time() {
+  Widget editTime() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Row(
@@ -97,7 +97,7 @@ class _Task_WidgetState extends State<Task_Widget> {
             width: 90,
             height: 28,
             decoration: BoxDecoration(
-              color: custom_green,
+              color: customGreen,
               borderRadius: BorderRadius.circular(18),
             ),
             child: Padding(

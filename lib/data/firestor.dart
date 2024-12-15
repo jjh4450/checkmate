@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:checkmate/model/notes_model.dart';
 import 'package:uuid/uuid.dart';
 
-class Firestore_Datasource {
+class FirestoreDatasource {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  Future<bool> CreateUser(String email) async {
+  Future<bool> createUser(String email) async {
     try {
       await _firestore
           .collection('users')
@@ -21,7 +21,7 @@ class Firestore_Datasource {
     }
   }
 
-  Future<bool> AddNote(String subtitle, String title, int image) async {
+  Future<bool> addNote(String subtitle, String title, int image) async {
     try {
       var uuid = Uuid().v4();
       DateTime data = new DateTime.now();
@@ -89,7 +89,7 @@ class Firestore_Datasource {
     }
   }
 
-  Future<bool> Update_Note(
+  Future<bool> updateNote(
       String uuid, int image, String title, String subtitle) async {
     try {
       DateTime data = new DateTime.now();
@@ -111,7 +111,7 @@ class Firestore_Datasource {
     }
   }
 
-  Future<bool> delet_note(String uuid) async {
+  Future<bool> deletNote(String uuid) async {
     try {
       await _firestore
           .collection('users')

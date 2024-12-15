@@ -52,11 +52,11 @@ class _Edit_ScreenState extends State<Edit_Screen> {
       children: [
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-            foregroundColor: custom_green,
+            foregroundColor: customGreen,
             minimumSize: Size(170, 48),
           ),
           onPressed: () {
-            Firestore_Datasource().Update_Note(
+            FirestoreDatasource().updateNote(
                 widget._note.id, indexx, title!.text, subtitle!.text);
             Navigator.pop(context);
           },
@@ -96,7 +96,7 @@ class _Edit_ScreenState extends State<Edit_Screen> {
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
                     width: 2,
-                    color: indexx == index ? custom_green : Colors.grey,
+                    color: indexx == index ? customGreen : Colors.grey,
                   ),
                 ),
                 width: 140,
@@ -140,7 +140,7 @@ class _Edit_ScreenState extends State<Edit_Screen> {
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide(
-                  color: custom_green,
+                  color: customGreen,
                   width: 2.0,
                 ),
               )),
@@ -175,7 +175,7 @@ class _Edit_ScreenState extends State<Edit_Screen> {
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(
-                color: custom_green,
+                color: customGreen,
                 width: 2.0,
               ),
             ),

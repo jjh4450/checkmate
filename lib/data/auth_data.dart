@@ -8,13 +8,13 @@ class AuthenticationRemote{
   }
 
   Future<void> register(
-      String email, String password, String PasswordConfirm) async {
-    if (PasswordConfirm == password) {
+      String email, String password, String passwordConfirm) async {
+    if (passwordConfirm == password) {
       await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
               email: email.trim(), password: password.trim())
           .then((value) {
-        Firestore_Datasource().CreateUser(email);
+        FirestoreDatasource().createUser(email);
       });
     }
   }

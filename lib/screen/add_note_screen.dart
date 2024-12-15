@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:checkmate/const/colors.dart';
 import 'package:checkmate/data/firestor.dart';
 
-class Add_creen extends StatefulWidget {
-  const Add_creen({super.key});
+class AddScreen extends StatefulWidget {
+  const AddScreen({super.key});
 
   @override
-  State<Add_creen> createState() => _Add_creenState();
+  State<AddScreen> createState() => _AddScreenState();
 }
 
-class _Add_creenState extends State<Add_creen> {
+class _AddScreenState extends State<AddScreen> {
   final title = TextEditingController();
   final subtitle = TextEditingController();
 
@@ -44,11 +44,11 @@ class _Add_creenState extends State<Add_creen> {
       children: [
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-            foregroundColor: custom_green,
+            foregroundColor: customGreen,
             minimumSize: Size(170, 48),
           ),
           onPressed: () {
-            Firestore_Datasource().AddNote(subtitle.text, title.text, indexx);
+            FirestoreDatasource().addNote(subtitle.text, title.text, indexx);
             Navigator.pop(context);
           },
           child: Text('add task'),
@@ -87,7 +87,7 @@ class _Add_creenState extends State<Add_creen> {
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
                     width: 2,
-                    color: indexx == index ? custom_green : Colors.grey,
+                    color: indexx == index ? customGreen : Colors.grey,
                   ),
                 ),
                 width: 140,
@@ -131,7 +131,7 @@ class _Add_creenState extends State<Add_creen> {
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide(
-                  color: custom_green,
+                  color: customGreen,
                   width: 2.0,
                 ),
               )),
@@ -166,7 +166,7 @@ class _Add_creenState extends State<Add_creen> {
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(
-                color: custom_green,
+                color: customGreen,
                 width: 2.0,
               ),
             ),

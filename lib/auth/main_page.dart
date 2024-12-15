@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:checkmate/auth/auth_page.dart';
 import 'package:checkmate/screen/home.dart';
 
-class Main_Page extends StatelessWidget {
-  const Main_Page({super.key});
+class MainPage extends StatelessWidget {
+  const MainPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class Main_Page extends StatelessWidget {
           if (snapshot.hasData) {
             return Home_Screen();
           } else {
-            return Auth_Page();
+            return AuthPage();
           }
         },
       ),
