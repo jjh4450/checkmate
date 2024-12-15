@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "33006080081",
+    "project_id": "checkmate-7e474",
+    "storage_bucket": "checkmate-7e474.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33006080081:android:34010b89addfbd312a2870",
+        "android_client_info": {
+          "package_name": "jeje.work.checkmate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUo9Rxa5twZdnjwxCPb6vUYX0wh-kYZNs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
