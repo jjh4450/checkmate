@@ -137,6 +137,7 @@ class _LogIN_ScreenState extends State<LogIN_Screen> {
         focusNode: _focusNode2,
         hintText: 'Password',
         icon: Icons.lock,
+        obscureText: true,
       );
 
   Widget _buildTextField({
@@ -144,10 +145,12 @@ class _LogIN_ScreenState extends State<LogIN_Screen> {
     required FocusNode focusNode,
     required String hintText,
     required IconData icon,
+    bool obscureText = false,
   }) {
     return TextField(
       controller: controller,
       focusNode: focusNode,
+      obscureText: obscureText,
       style: const TextStyle(fontSize: 16, color: Colors.black87),
       decoration: InputDecoration(
         prefixIcon: Icon(

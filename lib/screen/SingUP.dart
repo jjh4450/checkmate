@@ -151,6 +151,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         focusNode: _focusNode2,
         hintText: 'Password',
         icon: Icons.lock,
+        obscureText: true,
       );
 
   Widget _buildConfirmPasswordField() => _buildTextField(
@@ -158,6 +159,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         focusNode: _focusNode3,
         hintText: 'Confirm Password',
         icon: Icons.lock,
+        obscureText : true
       );
 
   Widget _buildTextField({
@@ -165,11 +167,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
     required FocusNode focusNode,
     required String hintText,
     required IconData icon,
+    bool obscureText = false,
   }) {
     return TextField(
       controller: controller,
       focusNode: focusNode,
       style: const TextStyle(fontSize: 16, color: Colors.black87),
+      obscureText: obscureText,
       decoration: InputDecoration(
         prefixIcon: Icon(
           icon,
