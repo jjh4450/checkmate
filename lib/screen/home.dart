@@ -3,6 +3,9 @@ import 'package:flutter/rendering.dart';
 import 'package:checkmate/const/colors.dart';
 import 'package:checkmate/screen/add_note_screen.dart';
 import 'package:checkmate/widgets/stream_note.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../widgets/statistics_card.dart';
+import '../widgets/week_calender.dart';
 
 class Home_Screen extends StatefulWidget {
   const Home_Screen({super.key});
@@ -14,10 +17,31 @@ class Home_Screen extends StatefulWidget {
 bool show = true;
 
 class _Home_ScreenState extends State<Home_Screen> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  void _signOut() async {
+    try {
+      await _auth.signOut();
+      Navigator.of(context).pushReplacementNamed('/login');
+    } catch (e) {
+      print('로그아웃 실패: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.logout, color: Colors.grey[700]),
+            onPressed: _signOut,
+          ),
+        ],
+      ),
       floatingActionButton: AnimatedSlide(
         duration: Duration(milliseconds: 300),
         offset: show ? Offset.zero : Offset(0, 2),
@@ -50,6 +74,8 @@ class _Home_ScreenState extends State<Home_Screen> {
           },
           child: CustomScrollView(
             slivers: [
+              week_calender(),
+              NotesStatistics(),
               SliverToBoxAdapter(
                 child: Padding(
                   padding: EdgeInsets.all(16),
@@ -63,9 +89,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                   ),
                 ),
               ),
-              SliverToBoxAdapter(
-                child: Stream_note(false),
-              ),
+              SliverToBoxAdapter(child: Stream_note(false)),
               SliverToBoxAdapter(
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
@@ -79,9 +103,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                   ),
                 ),
               ),
-              SliverToBoxAdapter(
-                child: Stream_note(true),
-              ),
+              SliverToBoxAdapter(child: Stream_note(true)),
             ],
           ),
         ),
