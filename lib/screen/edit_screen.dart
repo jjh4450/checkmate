@@ -98,7 +98,7 @@ class _Edit_ScreenState extends State<Edit_Screen> {
         Expanded(
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: customGreen,
+              backgroundColor: customBlack,
               foregroundColor: Colors.white,
               padding: EdgeInsets.symmetric(vertical: 15),
               shape: RoundedRectangleBorder(
@@ -137,12 +137,12 @@ class _Edit_ScreenState extends State<Edit_Screen> {
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
                   width: 2,
-                  color: indexx == index ? customGreen : Colors.grey.shade200,
+                  color: indexx == index ? customBlack : Colors.grey.shade200,
                 ),
                 boxShadow: [
                   if (indexx == index)
                     BoxShadow(
-                      color: customGreen.withOpacity(0.3),
+                      color: customBlack.withOpacity(0.3),
                       blurRadius: 8,
                       offset: Offset(0, 4),
                     ),
@@ -174,7 +174,7 @@ class _Edit_ScreenState extends State<Edit_Screen> {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: customGreen, width: 2),
+          borderSide: BorderSide(color: customBlack, width: 2),
         ),
       ),
     );
@@ -198,7 +198,7 @@ class _Edit_ScreenState extends State<Edit_Screen> {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: customGreen, width: 2),
+          borderSide: BorderSide(color: customBlack, width: 2),
         ),
       ),
     );

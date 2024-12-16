@@ -57,7 +57,7 @@ class _TaskWidgetState extends State<TaskWidget> {
                         Transform.scale(
                           scale: 0.9,
                           child: Checkbox(
-                            activeColor: customGreen,
+                            activeColor: customBlack,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(4),
                             ),
@@ -98,7 +98,7 @@ class _TaskWidgetState extends State<TaskWidget> {
         Container(
           padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
           decoration: BoxDecoration(
-            color: customGreen.withOpacity(0.1),
+            color: customBlack.withOpacity(0.1),
             borderRadius: BorderRadius.circular(20),
           ),
           child: Row(
@@ -109,7 +109,7 @@ class _TaskWidgetState extends State<TaskWidget> {
               Text(
                 widget._note.time,
                 style: TextStyle(
-                  color: customGreen,
+                  color: customBlack,
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
                 ),

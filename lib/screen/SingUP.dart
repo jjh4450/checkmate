@@ -99,7 +99,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           child: Text(
             'Login',
             style: TextStyle(
-              color: customGreen,
+              color: customBlack,
               fontSize: 15,
               fontWeight: FontWeight.bold,
             ),
@@ -113,7 +113,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return ElevatedButton(
       onPressed: _handleSignUp,
       style: ElevatedButton.styleFrom(
-        backgroundColor: customGreen,
+        backgroundColor: customBlack,
         minimumSize: Size(double.infinity, _buttonHeight),
         elevation: 4,
         shape: RoundedRectangleBorder(
@@ -177,7 +177,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       decoration: InputDecoration(
         prefixIcon: Icon(
           icon,
-          color: focusNode.hasFocus ? customGreen : Colors.grey[400],
+          color: focusNode.hasFocus ? customBlack : Colors.grey[400],
         ),
         hintText: hintText,
         hintStyle: TextStyle(color: Colors.grey[500]),
@@ -194,7 +194,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
       borderSide: BorderSide(
-        color: focused ? customGreen : Colors.grey[300]!,
+        color: focused ? customBlack : Colors.grey[300]!,
         width: focused ? 2 : 1,
       ),
     );

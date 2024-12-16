@@ -54,7 +54,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                 builder: (context) => AddScreen(),
               ));
             },
-            backgroundColor: customGreen,
+            backgroundColor: customBlack,
             icon: Icon(Icons.add, size: 24),
             label: Text('Add Note'),
             elevation: 4,

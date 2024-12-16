@@ -30,7 +30,7 @@ class week_calender extends StatelessWidget {
                 return Container(
                   padding: EdgeInsets.symmetric(vertical: 12),
                   decoration: BoxDecoration(
-                    color: index == 0 ? customGreen : Colors.white,
+                    color: index == 0 ? customBlack : Colors.white,
                     borderRadius: index == 0
                         ? BorderRadius.only(topLeft: Radius.circular(12))
                         : index == 6

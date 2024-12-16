@@ -92,7 +92,7 @@ class _AddScreenState extends State<AddScreen> {
         Expanded(
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: customGreen,
+              backgroundColor: customBlack,
               foregroundColor: Colors.white,
               padding: EdgeInsets.symmetric(vertical: 15),
               shape: RoundedRectangleBorder(
@@ -132,12 +132,12 @@ class _AddScreenState extends State<AddScreen> {
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
                   width: 2,
-                  color: indexx == index ? customGreen : Colors.grey.shade200,
+                  color: indexx == index ? customBlack : Colors.grey.shade200,
                 ),
                 boxShadow: [
                   if (indexx == index)
                     BoxShadow(
-                      color: customGreen.withOpacity(0.1),
+                      color: customBlack.withOpacity(0.1),
                       blurRadius: 8,
                       offset: Offset(0, 4),
                     ),
@@ -178,7 +178,7 @@ class _AddScreenState extends State<AddScreen> {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: customGreen, width: 2),
+          borderSide: BorderSide(color: customBlack, width: 2),
         ),
       ),
     );
@@ -206,7 +206,7 @@ class _AddScreenState extends State<AddScreen> {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: customGreen, width: 2),
+          borderSide: BorderSide(color: customBlack, width: 2),
         ),
       ),
     );

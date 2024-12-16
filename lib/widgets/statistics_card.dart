@@ -94,7 +94,7 @@ class NotesStatistics extends StatelessWidget {
                 buildStatisticsCard(
                   title: 'Pending',
                   count: '$pendingCount',
-                  countColor: Colors.black87,
+                  countColor: customBlack
                 ),
                 Container(
                   height: 40,
@@ -104,7 +104,7 @@ class NotesStatistics extends StatelessWidget {
                 buildStatisticsCard(
                   title: 'Completed',
                   count: '$completedCount',
-                  countColor: customGreen,
+                  countColor: Colors.grey,
                 ),
               ],
             ),
