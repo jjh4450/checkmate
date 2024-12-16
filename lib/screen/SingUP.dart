@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:checkmate/const/colors.dart';
 import 'package:checkmate/data/auth_data.dart';
+import 'package:lottie/lottie.dart';
 
 class SignUpScreen extends StatefulWidget {
   final VoidCallback show;
@@ -201,16 +202,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Widget _buildImage() {
-    return Container(
+    return Lottie.asset(
+      'images/7.json',
       width: double.infinity,
-      height: _imageHeight,
-      decoration: BoxDecoration(
-        color: backgroundColors,
-        image: const DecorationImage(
-          image: AssetImage('images/7.png'),
-          fit: BoxFit.fitWidth,
-        ),
-      ),
+      height: 250,
+      fit: BoxFit.contain,
+      alignment: Alignment.center,
     );
   }
 }

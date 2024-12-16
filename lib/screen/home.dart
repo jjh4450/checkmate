@@ -55,8 +55,8 @@ class _Home_ScreenState extends State<Home_Screen> {
               ));
             },
             backgroundColor: customBlack,
-            icon: Icon(Icons.add, size: 24),
-            label: Text('Add Note'),
+            icon: Icon(Icons.add, size: 24, color: Colors.white),
+            label: Text('Add Note', style: TextStyle(color: Colors.white)),
             elevation: 4,
           ),
         ),
